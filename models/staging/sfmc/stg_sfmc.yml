@@ -1,0 +1,118 @@
+
+version: 2
+
+models:
+    - name: stg_sfmc_bounce
+      description: "Salesforce Marketing Cloud Bounces. Note that e SMTPBounceReason and SMTPMessage fields have not been imported due to formatting issues."
+      columns:
+          - name: AccountID
+            description: "Your account ID number"
+            tests:
+                - not_null
+          - name: OYBAccountID
+            description: "The account ID number for any related On-Your-Behalf accounts. This field applies to enterprise accounts only. (nullable)"
+          - name: JobID
+            description: "The job ID number for the email send"
+            tests:
+                - not_null
+          - name: ListID
+            description: "The list ID number for the list used in the send"
+            tests:
+                - not_null
+          - name: BatchID
+            description: "The batch ID number for any batches used in the send"
+            tests:
+                - not_null
+          - name: SubscriberID
+            description: "The subscriber ID for the affected subscriber. This number represents the unique ID for each subscriber record."
+            tests:
+                - not_null
+          - name: SubscriberKey
+            description: "The subscriber key for the affected subscriber"
+            tests:
+                - not_null
+          - name: EventDate
+            description: "The date the bounce took place	"
+            tests:
+                - not_null
+          - name: IsUnique
+            description: "Whether the event is unique or repeated"
+            tests:
+                - not_null
+          - name: Domain
+            description: "The domain at which the bounce occurred"
+            tests:
+                - not_null
+          - name: BounceCategoryID
+            description: "The category ID of the bounce"
+            tests:
+                - not_null
+          - name: BounceCategory
+            description: "The category of the bounce"
+          - name: BounceSubcategoryID
+            description: "The ID number for the bounce subcategory"
+          - name: BounceSubcategory
+            description: "The subcategory of the bounce"
+          - name: BounceTypeID
+            description: "BounceTypeID	The ID number for the bounce type"
+            tests:
+                - not_null
+          - name: BounceType
+            description: "The type of bounce that occurred"
+
+          - name: STMPCode
+            description: "The error code for the bounce from the mail system"
+          - name: TriggererSendDefinitionObjectID
+            description: "D	The object ID for the triggered send definition"
+          - name: TriggeredSendCustomerKey
+            description: "The customer key for the triggered send"
+
+          
+
+    - name: stg_sfmc_click
+      description: "clicks"
+      columns:
+          - name: SubscriberKey
+            description: "The subscriber key for the affected subscriber"
+            tests:
+                - not_null
+
+    - name: stg_sfmc_complaint
+      description: "complaints data related to emails from your Marketing Cloud account."
+      columns:
+          - name: SubscriberKey
+            description: "SFMC Subscriber Key, typically set to email address"
+            tests:
+                - not_null
+
+    - name: stg_sfmc_ftaf
+      description: "behavioral information related to email messages from your Marketing Cloud account that were forwarded to friends"
+      columns:
+          - name: SubscriberKey
+            description: "SFMC Subscriber Key, typically set to email address"
+            tests:
+                - not_null
+
+    - name: stg_sfmc_job
+      description: "email send jobs"
+      columns:
+          - name: JobID
+            description: "The job ID number for the email send"
+            tests:
+                - not_null
+
+    - name: stg_sfmc_journey
+      description: "Find a journey's status, created and last modified date, and other general journey information using this Journey Builder data view."
+      columns:
+          - name: VersionID
+            description: "	The unique identifier for the version of the journey"
+            tests:
+                - not_null
+
+    - name: stg_sfmc_journeyactivity
+      description: "Use this data view to join to the email tracking system data views. Also use it to identify the Triggered Send Definition associated to an email activity in a Marketing Cloud journey and more."
+      columns:
+          - name: VersionID
+            description: "	The unique identifier for the version of the journey"
+            tests:
+                - not_null
